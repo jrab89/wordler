@@ -5,7 +5,8 @@ async function main() {
     const five_letter_words_content = await result.text();
     const words = five_letter_words_content.split('\n');
 
-    const possible_words_ul = document.getElementById("possible_words");
+    const possible_words_h2 = document.getElementById("possible_words_h2");
+    const possible_words_ul = document.getElementById("possible_words_ul");
     const include_input = document.getElementById("include");
     const exclude_input = document.getElementById("exclude");
 
@@ -27,12 +28,12 @@ async function main() {
             return exclude_chars.every(char => !word.includes(char));
         }).filter((word) => {
             return positional_match_inputs.every((input, index) => {
-                return input.value === '' ? true : word[index] === input.value;
+                return input.value === '' ? true : word[index] === input.value.toLowerCase();
             });
         });
 
         possible_words_ul.innerHTML = '';
-
+        possible_words_h2.innerHTML = `Possible words (${matching_words.length})`
         matching_words.forEach((word) => {
             const li = document.createElement("li");
             li.appendChild(document.createTextNode(word));
