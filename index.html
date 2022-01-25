@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>wordle.bot</title>
+
+    <style type="text/css">
+    div.controls {
+        display: table;
+    }
+
+    div.control {
+        display: table-row;
+    }
+
+    label, input {
+        display: table-cell;
+        margin-bottom: 10px;
+    }
+
+    label {
+        padding-right: 10px;
+    }
+
+    .match_input {
+        margin-right: 5px;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+    </style>
+  </head>
+  <body>
+    <!--  -->
+    <div class="controls">
+        <div class="control">
+            <label for="include">Must include letters:</label>
+            <input type="text" id="include" name="include">
+        </div>
+
+        <div class="control">
+            <label for="exclude">Cannot include letters:</label>
+            <input type="text" id="exclude" name="exclude">
+        </div>
+
+        <div class="control">
+            <label for="match_1st">Letters must match:</label>
+            <input type="text" id="match_1st" name="mach_1st" class="match_input" minlength="0" maxlength="1" size="1">
+            <input type="text" id="match_2nd" name="mach_2nd" minlength="0" class="match_input" maxlength="1" size="1">
+            <input type="text" id="match_3rd" name="mach_3rd" minlength="0" class="match_input" maxlength="1" size="1">
+            <input type="text" id="match_4th" name="mach_4th" minlength="0" class="match_input" maxlength="1" size="1">
+            <input type="text" id="match_5th" name="mach_5th" minlength="0" class="match_input" maxlength="1" size="1">
+        </div>
+    </div>
+
+    <br>
+    <h2>Possible words</h2>
+    <ul id="possible_words">
+        <!-- <li>Mix flour, baking powder, sugar, and salt.</li>
+        <li>In another bowl, mix eggs, milk, and oil.</li>
+        <li>Stir both mixtures together.</li>
+        <li>Fill muffin tray 3/4 full.</li>
+        <li>Bake for 20 minutes.</li> -->
+    </ul>
+
+    <script src="main.js"></script>
+  </body>
+</html>
