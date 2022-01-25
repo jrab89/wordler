@@ -9,6 +9,14 @@ async function main() {
     const include_input = document.getElementById("include");
     const exclude_input = document.getElementById("exclude");
 
+    const positional_match_inputs = [
+        document.getElementById("match_1st"),
+        document.getElementById("match_2nd"),
+        document.getElementById("match_3rd"),
+        document.getElementById("match_4th"),
+        document.getElementById("match_5th")
+    ];
+
     const update_possible_words = () => {
         const include_chars = include_input.value.toLowerCase().split('');
         const exclude_chars = exclude_input.value.toLowerCase().split('');
@@ -17,6 +25,10 @@ async function main() {
             return include_chars.every(char => word.includes(char));
         }).filter((word) => {
             return exclude_chars.every(char => !word.includes(char));
+        }).filter((word) => {
+            return positional_match_inputs.every((input, index) => {
+                return input.value === '' ? true : word[index] === input.value;
+            });
         });
 
         possible_words_ul.innerHTML = '';
@@ -28,8 +40,13 @@ async function main() {
         });
     };
 
-    include_input.onkeyup = update_possible_words;
-    exclude_input.onkeyup = update_possible_words;
+    [include_input,
+     exclude_input,
+     positional_match_inputs[0],
+     positional_match_inputs[1],
+     positional_match_inputs[2],
+     positional_match_inputs[3],
+     positional_match_inputs[4]].forEach(elem => elem.onkeyup = update_possible_words);
 
     update_possible_words();
 }
